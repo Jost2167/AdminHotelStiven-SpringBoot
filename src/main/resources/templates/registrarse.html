@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+	<style>
+        .small-text {
+            font-size: 0.8rem;
+            color: #fff;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+        .container {
+            max-width: 100%;
+        }
+        .img-fluid {
+            max-height: 400px;
+        }
+    </style>
+
+	<div th:replace="includes/layout :: navbar-iniciar-registrar"></div>
+
+	<div class="container mt-5">
+	    <div class="row justify-content-center">
+	        <div class="col-md-5">
+	            <img th:src="@{/img/registro.png}" alt="Imagen" class="img-fluid rounded">
+	        </div>
+	
+	        <div class="col-md-5">
+	            <div class="card">
+	                <div class="card-header" style="background-color: #003B95; color: white;">Registro</div>
+	                <div class="card-body">
+	                    <form th:action="@{/registrarse}" method="post" th:object="${usuario}">
+	                        <div class="form-row">
+	                            <div class="form-group col-md-6">
+	                                <label for="nombre">Nombre</label>
+	                                <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
+	                            </div>
+	                            <div class="form-group col-md-6">
+	                                <label for="apellido">Apellido</label>
+	                                <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
+	                            </div>
+	                        </div>
+	                        <div class="form-row">
+	                            <div class="form-group col-md-6">
+	                                <label for="correo">Correo Electrónico</label>
+	                                <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
+	                            </div>
+	                            <div class="form-group col-md-6">
+	                                <label for="userName">Usuario</label>
+	                                <input type="text" class="form-control" name="userName" placeholder="Ingrese su nombre de usuario">
+	                            </div>
+	                            <div class="form-group col-md-12">
+	                                <label for="password">Contraseña</label>
+	                                <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
+	                            </div>
+	                        </div>
+	                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #003B95;">Registrarse</button>
+	                    </form>
+	                </div>
+	                <div class="card-footer">
+	                    <p class="text-center">¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a></p>
+	                </div>
+	            </div>
+	            <footer class="footer mt-auto py-3">
+	                <div class="container text-center">
+	                    <p class="mb-0 small-text" style="color: black;">Al registrarse, aceptas nuestros <a href="#">Términos y condiciones</a> y la <a href="#">Política de privacidad</a>.</p>
+	                    <p class="mb-0 small-text" style="color: black;">Todos los derechos reservados. Copyright (2024) - HotelStiven.com™</p>
+	                </div>
+	            </footer>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

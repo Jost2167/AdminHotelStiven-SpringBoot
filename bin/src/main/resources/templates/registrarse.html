@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .small-text {
+            font-size: 0.8rem;
+            color: #fff;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+        .container {
+            max-width: 100%;
+        }
+        .img-fluid {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+    <a class="navbar-brand" href="/">
+        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+        HotelStiven
+    </a>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20" style="margin-right: 5px;">
+                Idioma
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Español</a></li>
+                <li><a class="dropdown-item" href="#">Inglés</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <img th:src="@{/img/registro.png}" alt="Imagen" class="img-fluid rounded">
+        </div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header" style="background-color: #003B95; color: white;">Registro</div>
+                <div class="card-body">
+                    <form th:action="@{/registrarse}" method="post" th:object="${usuario}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="correo">Correo Electrónico</label>
+                                <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="userName">Usuario</label>
+                                <input type="text" class="form-control" name="userName" placeholder="Ingrese su nombre de usuario">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #003B95;">Registrarse</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <p class="text-center">¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+            <footer class="footer mt-auto py-3">
+                <div class="container text-center">
+                    <p class="mb-0 small-text" style="color: black;">Al registrarse, aceptas nuestros <a href="#">Términos y condiciones</a> y la <a href="#">Política de privacidad</a>.</p>
+                    <p class="mb-0 small-text" style="color: black;">Todos los derechos reservados. Copyright (2024) - HotelStiven.com™</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

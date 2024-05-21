@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Residencias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Residencias</h1>
+        
+        <a class="btn btn-primary" href="/crear-residencia-admin">Crear Residencia</a>
+        
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Ubicacion</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Imagen</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="residencia : ${residencias}">
+                    <td th:text="${residencia.id}"></td>
+                    <td th:text="${residencia.nombre}"></td>
+                    <td th:text="${residencia.categoria}"></td>
+                    <td th:text="${residencia.ubicacion}"></td>
+                    <td th:text="${residencia.descripcion}"></td>
+                    <td th:text="${residencia.precio}"></td>
+                    <td th:text="${residencia.estado}"></td>
+                    <td>
+                        <img th:src="@{'/recursos/'+${residencia.imagen}}" alt="Imagen de la Residencia" class="img-fluid" width="100">
+                    </td>
+                    <td style="white-space:nowrap">
+                    	<a class="btn btn-warning" th:href="@{/editar-residencia-admin/{id}(id=${residencia.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/eliminar-residencia-admin/{id}(id=${residencia.id})}"
+                        onclick="return confirm('¿Esta seguro?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

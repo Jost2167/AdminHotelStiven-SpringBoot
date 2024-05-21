@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Nueva Residencia</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f5f5f5;
+        margin: 0;
+    }
+    .form-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+    .form-title {
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+    .form-label {
+        font-weight: bold;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+    <a class="navbar-brand" href="/">
+        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+        HotelStiven
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <!-- Aquí está el idioma -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+                        style="margin-right: 5px;">Idioma
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Español</a>
+                    <a class="dropdown-item" href="#">Inglés</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nosotros</a>
+        	</li>
+        	<li class="nav-item">
+                <a class="nav-link" href="/ver-reserva">Ver reserva</a>
+        	</li>
+        	<li class="nav-item">
+                <a class="nav-link" href="/login">Iniciar sesión</a>
+        	</li>
+        	<form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-danger mt-3">Cerrar sesión</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="form-container">
+        <h2 class="text-center form-title">Nueva Residencia</h2>
+        
+        <form th:action="@{/admin/guardar-residencia}" enctype="multipart/form-data" method="post" th:object="${residenciaEntity}">
+            
+            <div class="form-group mb-3">
+                <div class="row">
+                    <div class="col">
+                    	<input type="hidden" th:field="*{id}">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required></input>
+                        <!-- <p th:if="${#fields.hasErrors('nombre')}" th:errorclass="text-danger" th:errors="${nombre}"></p> -->
+                    </div>
+                    
+                    <div class="col">                
+	                    <label for="ubicacion" class="form-label">Ubicacion</label>
+                        <input type="text" class="form-control" th:field="*{ubicacion}" id="ubicacion" required></input>
+                        <!-- <p th:if="${#fields.hasErrors('ubicacion')}" th:errorclass="text-danger" th:errors="${ubicacion}"></p> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mb-3">
+            	<div class="row">
+            		<div class="col">
+            			<label for="categoria" class="form-label">Categoría</label>
+			                <select class="form-select" th:field="*{categoria}" id="categoria" required>
+			                    <option value="Apartamento">Apartamento</option>
+			                    <option value="Casa">Casa</option>
+			                    <option value="Casa de paso">Casa de paso</option>
+			                    <option value="Hotel">Hotel</option>
+			                    <option value="Motel">Motel</option>
+			                </select>
+			                <!-- <p th:if="${#fields.hasErrors('categoria')}" th:errorclass="text-danger" th:errors="${categoria}"></p> -->
+            		</div>
+            		
+            		<div class="col">
+                        <label for="estado" class="form-label">Estado</label>
+                        <select class="form-select" th:field="*{estado}" id="estado" required>
+                            <option value="RESERVADO">RESERVADO</option>
+                            <option value="DISPONIBLE">DISPONIBLE</option>
+                        </select>
+                        <!-- <p th:if="${#fields.hasErrors('estado')}" th:errorclass="text-danger" th:errors="${estado}"></p> -->
+                    </div>
+            	</div>
+                
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" th:field="*{descripcion}" id="descripcion" required></textarea>
+                <!-- <p th:if="${#fields.hasErrors('descripcion')}" th:errorclass="text-danger" th:errors="${descripcion}"></p> -->
+            </div>
+            
+            <div class="form-group mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="precio" class="form-label">Precio</label>
+                        <input class="form-control" type="number" min="0" th:field="*{precio}" id="precio" required>
+                        <!-- <p th:if="${#fields.hasErrors('precio')}" th:errorclass="text-danger" th:errors="${precio}"></p> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input class="form-control" type="file" name="file" th:text="${residenciaEntity.imagen}" required>
+            </div>
+                        
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-danger" href="/ver-residencias-admin" role="button">Cancelar</a>
+            </div>
+                
+        </form>
+        
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
