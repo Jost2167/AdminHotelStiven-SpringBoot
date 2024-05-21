@@ -1,6 +1,7 @@
 package com.stiven.app.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import com.stiven.app.entity.ResidenciaEntity;
 import com.stiven.app.entity.UsuarioEntity;
 import com.stiven.app.service.IResidenciaService;
 import com.stiven.app.service.UsuarioService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class GeneralController {
