@@ -26,14 +26,7 @@ public class HabitacionController {
 	    private HabitacionService habitacionService;
 
 	 	//EL USUARIO SOLAMENTE PUEDE VER ESTA RUTA. NECESITO VALIDAD QUE SEA EL USUARIO CORRECTO
-//	    @GetMapping("/usuario/{usuarioId}")
-//	    public String getHabitacionesPorUsuario(@PathVariable Long usuarioId, Model model) {
-//	        UsuarioEntity usuario = new UsuarioEntity();
-//	        usuario.setId(usuarioId);
-//	        List<HabitacionEntity> habitaciones = habitacionService.getHabitacionesPorUsuario(usuario);
-//	        model.addAttribute("habitaciones", habitaciones);
-//	        return "habitaciones_por_usuario"; // Nombre de la vista
-//	    }
+
 	 
 	 @GetMapping("/usuario/{usuarioId}")
 	 public String getHabitacionesPorUsuario(@PathVariable Long usuarioId, Model model) {
@@ -51,7 +44,7 @@ public class HabitacionController {
 	     }
 	     
 	     model.addAttribute("habitaciones", habitaciones);
-	     return "habitaciones_por_usuario"; // Nombre de la vista
+	     return "/usuario/habitaciones-por-usuario"; // Nombre de la vista
 	 }
 	 	
 

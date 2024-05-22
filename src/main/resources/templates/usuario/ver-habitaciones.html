@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+    <div th:replace="includes/layout :: navbar"></div>
+
+    <div class="container mt-4">
+        <h2 th:text="${residencia.nombre} + ' - Habitaciones'"></h2>
+        <div class="row">
+            <!-- Iterar sobre cada habitación -->
+            <div th:each="habitacion : ${habitaciones}" class="col-md-4">
+                <div class="card mb-4">
+                    <!-- Si tienes una imagen de la habitación, puedes mostrarla aquí -->
+                    <!-- <img th:src="@{'/recursos/'+${habitacion.imagen}}" class="card-img-top" alt="Habitación"> -->
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${habitacion.nombre}"></h5>
+                        <p class="card-text"><strong>Precio:</strong> <span th:text="${habitacion.precio}"></span></p>
+                        <p class="card-text"><strong>Estado:</strong> <span th:text="${habitacion.estado}"></span></p>
+                        <!-- Agrega más detalles de la habitación si lo necesitas -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="includes/layout :: footer"></footer>
+</body>
+</html>

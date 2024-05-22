@@ -36,7 +36,7 @@ public class ResidenciaEntity {
     @OneToMany(mappedBy = "residencia")
     private List<HabitacionEntity> habitaciones;
     
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {

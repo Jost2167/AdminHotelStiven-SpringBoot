@@ -62,7 +62,7 @@
                 <p><strong>Estado:</strong> <span th:text="${residencia.estado}"></span></p>
                 <p><strong>Precio:</strong> <span th:text="${residencia.precio}"></span></p>
                 <p><strong>Ubicación:</strong> <span th:text="${residencia.ubicacion}"></span></p>
-                <a th:href="@{'/reservar/' + ${residencia.id}}" class="btn btn-primary mt-3">Reservar Ahora</a>
+                <a th:href="@{'/usuario/ver-habitaciones/' + ${residencia.id}}" class="btn btn-primary mt-3">Ver habitaciones</a>
             </div>
         </div>
     </div>

@@ -59,7 +59,7 @@ public class AdminController {
         boolean esExistente = residenciaEntity.getId() != null;
 
         if (!imagen.isEmpty()) {
-            String rutaAbsoluta = "C://Residencia//recursos";
+            String rutaAbsoluta = "C://residencia//recursos";
 
             try {
                 byte[] bytesImg = imagen.getBytes();
