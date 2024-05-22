@@ -23,13 +23,16 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests(request -> request
-                .requestMatchers("/","/registrarse","/login","/static/**","/img/**").permitAll()
+                .requestMatchers("/","/registrarse","/login","/static/**","/img/**","/usuario/ver-habitaciones/**","/recursos/**").permitAll()
                 .requestMatchers("/admin/ver-residencias", "/admin/crear-residencia").hasRole("ADMIN")
                 .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login").permitAll()
                         .defaultSuccessUrl("/"))
                 .logout(logout -> logout.permitAll());
+        
+
+        
 		return http.build();
 	}
 	
