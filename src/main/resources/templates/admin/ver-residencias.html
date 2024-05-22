@@ -3,25 +3,25 @@
 <head th:replace="includes/layout :: head"></head>
 <body>
 
-	<div th:replace="includes/layout :: navbar-admin"></div>
+	<div th:replace="includes/layout :: navbar-admin-ver"></div>
 
     <div class="container">
-        <h2 class="text-center my-4 font-weight-bold">Residencias</h2>
+        <h2 class="text-center my-4 font-weight-bold">[[#{residencias}]]</h2>
         
-        <a class="btn btn-primary" href="/admin/crear-residencia">Crear residencia</a>
+        <a class="btn btn-primary" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
         
         <table class="table mt-4">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Categoria</th>
-                    <th>Ubicacion</th>
-                    <th>Descripcion</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                    <th>Imagen</th>
-                    <th>Accion</th>
+                    <th>[[#{ver.id}]]</th>
+                    <th>[[#{contacto.nombre}]]</th>
+                    <th>[[#{ver.categoria}]]</th>
+                    <th>[[#{ver.ubicacion}]]</th>
+                    <th>[[#{ver.descripcion}]]</th>
+                    <th>[[#{ver.precio}]]</th>
+                    <th>[[#{ver.estado}]]</th>
+                    <th>[[#{ver.imagen}]]</th>
+                    <th>[[#{ver.accion}]]</th>
                 </tr>
             </thead>
             <tbody>

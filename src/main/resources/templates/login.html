@@ -10,7 +10,7 @@
         }
     </style>
 
-	<div th:replace="includes/layout :: navbar-iniciar-registrar"></div>
+	<div th:replace="includes/layout :: navbar-iniciar"></div>
 
 	<div class="container mt-5">
 	    <div class="row justify-content-center">
@@ -20,7 +20,7 @@
 	
 	        <div class="col-md-6">
 	            <div class="card">
-	                <div class="card-header" style="background-color: #003B95; color: white;">Inicio de Sesión</div>
+	                <div class="card-header" style="background-color: #003B95; color: white;">[[#{login.inicio}]]</div>
 	                <div class="card-body">
 	                    <div th:if="${param.success}">
 	                        Registro exitoso. Por favor, recuerdar tus datos.
@@ -30,24 +30,24 @@
 	                    </div>
 	                    <form th:action="@{/login}" method="post">
 	                        <div class="form-group">
-	                            <label for="username">Usuario</label>
-	                            <input type="text" class="form-control" name="username" placeholder="Ingrese su usuario.">
+	                            <label for="username">[[#{login.usuario}]]</label>
+	                            <input type="text" class="form-control" name="username">
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="password">Contraseña</label>
-	                            <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña.">
+	                            <label for="password">[[#{login.contrasena}]]</label>
+	                            <input type="password" class="form-control" name="password">
 	                        </div>
-	                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #003B95;">Iniciar Sesión</button>
+	                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #003B95;">[[#{login.iniciar}]]</button>
 	                    </form>
 	                </div>
 	                <div class="card-footer">
-	                    <p class="text-center">¿No tienes una cuenta? <a href="/registrarse">Regístrate aquí</a></p>
+	                    <p class="text-center">[[#{login.cuenta}]] <a href="/registrarse">[[#{login.cuenta2}]]</a></p>
 	                </div>
 	            </div>
 	            <footer class="footer mt-auto py-3">
 	                <div class="container text-center">
-	                    <p class="mb-0 small-text" style="color: black;">Al registrarse, aceptas nuestros <a href="#">Términos y condiciones</a> y la <a href="#">Política de privacidad</a>.</p>
-	                    <p class="mb-0 small-text" style="color: black;">Todos los derechos reservados. Copyright (2024) - HotelStiven.com™</p>
+	                    <p class="mb-0 small-text" style="color: black;">[[#{login.terminos1}]]</p>
+	                    <p class="mb-0 small-text" style="color: black;">[[#{login.terminos2}]] Copyright (2024) - HotelStiven.com™</p>
 	                </div>
 	            </footer>
 	        </div>

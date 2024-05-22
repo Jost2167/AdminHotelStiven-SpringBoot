@@ -21,21 +21,21 @@
                 <img src="/img/ciudad/neiva.jpg" class="d-block w-100" alt="..." style="max-height: 550px;">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>NEIVA</h5>
-                    <p>Una ciudad cautivadora en el corazón de Colombia, ofrece una amplia variedad de alojamientos para todos los gustos y presupuestos. Desde hoteles boutique hasta cómodos albergues, aquí encontrarás el lugar perfecto para descansar mientras exploras las maravillas naturales y culturales que esta región tiene para ofrecer.</p>
+                    <p>[[#{carousel.neiva}]]</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="/img/ciudad/medellin.jpg" class="d-block w-100" alt="..." style="max-height: 550px;">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>MEDELLÍN</h5>
-                    <p>Una ciudad vibrante y acogedora, ofrece una amplia gama de alojamientos para todos los gustos y presupuestos. Desde hoteles boutique hasta acogedores bed and breakfasts, cada opción promete una experiencia única. Sumérgete en la belleza y la hospitalidad de esta ciudad colombiana mientras exploras sus encantadores rincones.</p>
+                    <p>[[#{carousel.medellin}]]</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="/img/ciudad/cali.jpg" class="d-block w-100" alt="..." style="max-height: 550px;">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>CALI</h5>
-                    <p>La "Capital Mundial de la Salsa", te invita a disfrutar de su vibrante escena cultural y su cálido clima tropical. Con una amplia selección de alojamientos, desde lujosos hoteles hasta acogedores hostales, encontrarás el lugar perfecto para descansar y explorar la energía contagiosa de esta ciudad colombiana.</p>
+                    <p>[[#{carousel.cali}]]</p>
                 </div>
             </div>
         </div>
@@ -71,31 +71,32 @@
     <div class="container" id="nosotros">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-6">
-                <h2 class="text-center">Sobre Nosotros</h2>
+                <h2 class="text-center">[[#{nav.nosotros}]]</h2>
                 <div class="row mt-2">
                     <div class="col-md-12 text-center">
                         <img src="/img/nosotros.png" alt="Nosotros" class="img-fluid mb-3" style="max-width: 300px;">
-                        <p>HotelStiven es más que un simple lugar para alojarse; es una experiencia. Brindamos un servicio excepcional a nuestros huéspedes para asegurar que cada estancia sea memorable. Ofrecemos una variedad de opciones de alojamiento.</p>
-                        <p>Nuestro equipo está comprometido con la excelencia en cada detalle, desde la comodidad de nuestras habitaciones hasta la calidad del servicio al cliente. Ya sea por negocios o por placer, HotelStiven hará que tu experiencia sea inolvidable.</p>
+                        <p>[[#{sobrenosotros.p1}]]</p>
+                        <p>[[#{sobrenosotros.p2}]]</p>
+                        
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <h2 class="text-center">Contacto</h2>
+                <h2 class="text-center">[[#{contacto}]]</h2>
                 <form class="mt-2">
                     <div class="form-group">
-                        <label for="name">Nombre:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
+                        <label for="name">[[#{contacto.nombre}]]:</label>
+                        <input type="text" class="form-control" id="name">
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo electrónico:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+                        <label for="email">[[#{contacto.correo}]]:</label>
+                        <input type="email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
-                        <label for="message">Mensaje:</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Ingrese su mensaje"></textarea>
+                        <label for="message">[[#{contacto.mensaje}]]:</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    <button type="submit" class="btn btn-primary">[[#{contacto.mensaje}]]</button>
                 </form>
                 <div class="social-icons mt-3">
                     <a href="https://wa.me/1234567890" target="_blank">

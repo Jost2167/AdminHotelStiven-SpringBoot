@@ -36,29 +36,29 @@
     }
 </style>
 
-	<div th:replace="includes/layout :: navbar-admin"></div>
+	<div th:replace="includes/layout :: navbar-admin-crear"></div>
 	
 <div class="form-container">
-    <h2 class="text-center mb-4 font-weight-bold">Nueva Residencia</h2>
+    <h2 class="text-center mb-4 font-weight-bold">[[#{nueva.residencia}]]</h2>
     
     <form th:action="@{/admin/guardar-residencia}" enctype="multipart/form-data" method="post" th:object="${residenciaEntity}">
         <div class="row mb-3">
             <div class="col">
                 <div class="form-group">
                 	<input type="hidden" th:field="*{id}" />
-                    <label for="nombre" class="form-label">Nombre</label>
+                    <label for="nombre" class="form-label">[[#{contacto.nombre}]]</label>
                     <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required />
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label for="ubicacion" class="form-label">Ubicacion</label>
+                    <label for="ubicacion" class="form-label">[[#{ver.ubicacion}]]</label>
                     <input type="text" class="form-control" th:field="*{ubicacion}" id="ubicacion" required />
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label for="precio" class="form-label">Precio</label>
+                    <label for="precio" class="form-label">[[#{ver.precio}]]</label>
                     <input class="form-control" type="number" min="0" th:field="*{precio}" id="precio" required />
                 </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="form-group">
-                    <label for="categoria" class="form-label">Categoría</label>
+                    <label for="categoria" class="form-label">[[#{ver.categoria}]]</label>
                     <select class="form-select" th:field="*{categoria}" id="categoria" required>
                         <option value="Apartamento">Apartamento</option>
                         <option value="Casa">Casa</option>
@@ -79,7 +79,7 @@
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label for="estado" class="form-label">Estado</label>
+                    <label for="estado" class="form-label">[[#{ver.estado}]]</label>
                     <select class="form-select" th:field="*{estado}" id="estado" required>
                         <option value="RESERVADO">RESERVADO</option>
                         <option value="DISPONIBLE">DISPONIBLE</option>
@@ -89,18 +89,18 @@
         </div>
  
  		<div class="form-group mb-3">
- 			<label for="imagen" class="form-label">Imagen</label>
+ 			<label for="imagen" class="form-label">[[#{ver.imagen}]]</label>
 			<input class="form-control" type="file" name="file"  required />
         </div>
         
         <div class="form-group mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
+            <label for="descripcion" class="form-label">[[#{ver.descripcion}]]</label>
             <textarea class="form-control" th:field="*{descripcion}" id="descripcion" required></textarea>
         </div>
         
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a class="btn btn-danger" href="/admin/ver-residencias" role="button">Cancelar</a>
+            <button type="submit" class="btn btn-primary">[[#{guardar}]]</button>
+            <a class="btn btn-danger" href="/admin/ver-residencias" role="button">[[#{cancelar}]]</a>
         </div>
     </form>
 </div>
