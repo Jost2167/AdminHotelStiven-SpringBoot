@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Habitaciones por Usuario</title>
+</head>
+<body>
+    <h1>Habitaciones del Usuario</h1>
+    <table>
+        <thead>
+            <tr>
+            	<th>Categoría</th>
+                <th>Hotel</th>
+                <th>Ubicacion</th>
+                <th>Descripción</th>
+                <th>Habitacion</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="habitacion : ${habitaciones}">
+                <td th:text="${habitacion.residencia.categoria}"></td>
+                <td th:text="${habitacion.residencia.nombre}"></td>
+                <td th:text="${habitacion.residencia.ubicacion}"></td>
+                <td th:text="${habitacion.residencia.descripcion}"></td>
+                <td th:text="${habitacion.nombre}"></td>
+                <td th:text="${habitacion.precio}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
