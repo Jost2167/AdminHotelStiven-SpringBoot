@@ -28,9 +28,9 @@ public class GeneralController {
 	
 	@GetMapping("/")
 	public String index(Model model) {
-		List<ResidenciaEntity> residencias = residenciaService.listAll();
-		model.addAttribute("residencias", residencias);
-		return "index";
+	    List<ResidenciaEntity> residenciasDisponibles = residenciaService.listAllDisponibles();
+	    model.addAttribute("residencias", residenciasDisponibles);
+	    return "index";
 	}
 	
 	@GetMapping("/login")

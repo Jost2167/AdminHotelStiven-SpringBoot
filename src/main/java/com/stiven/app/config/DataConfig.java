@@ -50,7 +50,7 @@ public class DataConfig {
             residenciaB.setUbicacion("Ciudad Y");
             residenciaB.setDescripcion("Descripción de la Residencia B");
             residenciaB.setPrecio("50");
-            residenciaB.setEstado("Ocupado");
+            residenciaB.setEstado("Disponible");
             residenciaB.setImagen("neiva2.jpg");
             residenciaRepository.save(residenciaB);
 

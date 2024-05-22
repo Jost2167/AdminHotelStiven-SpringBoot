@@ -17,6 +17,10 @@ public class ResidenciaService implements IResidenciaService{
 	@Autowired
 	ResidenciaRepository residenciaRepository;
 
+	public List<ResidenciaEntity> listAllDisponibles() {
+	    return residenciaRepository.findByEstado("Disponible");
+	}
+	
 	@Override
 	public void save(ResidenciaEntity residencia) {
 		residenciaRepository.save(residencia);

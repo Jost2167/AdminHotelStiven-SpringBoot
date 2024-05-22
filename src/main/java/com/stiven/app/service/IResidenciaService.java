@@ -6,6 +6,7 @@ import com.stiven.app.entity.ResidenciaEntity;
 
 public interface IResidenciaService {
 
+	List<ResidenciaEntity> listAllDisponibles();
 	void save(ResidenciaEntity residencia);
 	List<ResidenciaEntity> listAll();
 	void deleteById(Long id);
