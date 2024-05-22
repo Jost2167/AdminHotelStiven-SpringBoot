@@ -25,15 +25,14 @@ public class UsuarioController {
 	@Autowired
     private HabitacionService habitacionService; // Inyecta el servicio HabitacionService
 
-	
-	@GetMapping("/ver-habitaciones/{idResidencia}")
-	public String verHabitaciones(@PathVariable Long idResidencia, Model model) {
-	    ResidenciaEntity residencia = residenciaService.listById(idResidencia);
-	    List<HabitacionEntity> habitaciones = habitacionService.getHabitacionesPorResidencia(residencia);
-	    model.addAttribute("residencia", residencia);
-	    model.addAttribute("habitaciones", habitaciones);
-	    return "/usuario/ver-habitaciones";
-	}
+	@GetMapping("/ver-habitaciones/{residenciaId}")
+    public String getHabitacionesPorResidencia(@PathVariable Long residenciaId, Model model) {
+        ResidenciaEntity residencia = residenciaService.listById(residenciaId);
+        List<HabitacionEntity> habitacionesDisponibles = habitacionService.getHabitacionesDisponiblesPorResidencia(residencia);
+        model.addAttribute("residencia", residencia);
+        model.addAttribute("habitaciones", habitacionesDisponibles);
+        return "/usuario/ver-habitaciones"; // Nombre de la vista
+    }
 
 	
 }

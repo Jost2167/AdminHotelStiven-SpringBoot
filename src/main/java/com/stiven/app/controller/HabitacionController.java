@@ -17,6 +17,7 @@ import com.stiven.app.entity.HabitacionEntity;
 import com.stiven.app.entity.ResidenciaEntity;
 import com.stiven.app.entity.UsuarioEntity;
 import com.stiven.app.service.HabitacionService;
+import com.stiven.app.service.ResidenciaService;
 
 @Controller
 @RequestMapping("/habitacion")
@@ -25,6 +26,10 @@ public class HabitacionController {
 	 @Autowired
 	    private HabitacionService habitacionService;
 
+	 @Autowired
+	    private ResidenciaService residenciaService;
+	 
+	 
 	 	//EL USUARIO SOLAMENTE PUEDE VER ESTA RUTA. NECESITO VALIDAD QUE SEA EL USUARIO CORRECTO
 
 	 
@@ -46,16 +51,15 @@ public class HabitacionController {
 	     model.addAttribute("habitaciones", habitaciones);
 	     return "/usuario/habitaciones-por-usuario"; // Nombre de la vista
 	 }
-	 	
-
-	    @GetMapping("/residencia/{residenciaId}")
-	    public String getHabitacionesPorResidencia(@PathVariable Long residenciaId, Model model) {
-	        ResidenciaEntity residencia = new ResidenciaEntity();
-	        residencia.setId(residenciaId);
-	        List<HabitacionEntity> habitaciones = habitacionService.getHabitacionesPorResidencia(residencia);
-	        model.addAttribute("habitaciones", habitaciones);
-	        return "habitaciones_por_residencia"; // Nombre de la vista
-	    }
+	 
+	 @GetMapping("/residencia/{residenciaId}")
+	 public String getHabitacionesPorResidencia(@PathVariable Long residenciaId, Model model) {
+	     ResidenciaEntity residencia = residenciaService.listById(residenciaId);
+	     List<HabitacionEntity> habitaciones = habitacionService.getHabitacionesPorResidencia(residencia);
+	     model.addAttribute("residencia", residencia);
+	     model.addAttribute("habitaciones", habitaciones);
+	     return "habitaciones_por_residencia"; // Nombre de la vista
+	 }
 
 	    @GetMapping("/nueva")
 	    public String mostrarFormularioNuevaHabitacion(Model model) {

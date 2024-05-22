@@ -16,6 +16,10 @@ public class HabitacionService {
 	@Autowired
     private HabitacionRepository habitacionRepository;
 
+	public List<HabitacionEntity> getHabitacionesDisponiblesPorResidencia(ResidenciaEntity residencia) {
+        return habitacionRepository.findByResidenciaAndEstado(residencia, "Disponible");
+    }
+	
     public List<HabitacionEntity> getHabitacionesPorUsuario(UsuarioEntity usuario) {
         return habitacionRepository.findByUsuario(usuario);
     }
