@@ -24,7 +24,7 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(request -> request
                 .requestMatchers("/","/registrarse","/login","/static/**","/img/**","/usuario/ver-habitaciones/**","/recursos/**").permitAll()
-                .requestMatchers("/admin/ver-residencias", "/admin/crear-residencia").hasRole("ADMIN")
+                .requestMatchers("/admin/**","/habitacion/**").hasRole("ADMIN")
                 .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login").permitAll()
