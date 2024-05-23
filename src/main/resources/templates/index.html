@@ -3,6 +3,80 @@
 <head th:replace="includes/layout :: head"></head>
 <body>
 	<div th:replace="includes/layout :: navbar"></div>
+	
+	<style>
+		.residencia-card {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.residencia-card img {
+	border-radius: 15px;
+	height: 200px;
+	width: auto;
+	max-width: 100%;
+	object-fit: cover;
+	margin: 0 auto;
+}
+
+.residencia-description {
+	padding: 20px;
+	flex: 1;
+}
+
+.container-custom {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.carousel-item img {
+	height: 400px;
+	object-fit: cover;
+	width: 100%;
+}
+
+.ValueProposition_block__YLRvo {
+	flex: 0 0 calc(33.33% - 20px);
+	max-width: calc(33.33% - 20px);
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.ValueProposition_image__IMuA8 {
+	width: 80px;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.ValueProposition_heading__UA01t {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.ValueProposition_textSection__BzPPX {
+	font-size: 12px;
+}
+
+.ValueProposition_container__yQv1l {
+	background-color: #003B95;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+}
+
+.ValueProposition_block__YLRvo {
+	flex: 1;
+	text-align: center;
+	padding: 20px;
+}
+
+	</style>
+			
+	
 	<div th:fragment="index">
 		<!-- Carrusel de Imágenes -->
 		<div class="carousel-container">

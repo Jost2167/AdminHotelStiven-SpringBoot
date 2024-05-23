@@ -19,7 +19,6 @@ import com.stiven.app.entity.UsuarioEntity;
 import com.stiven.app.service.EstadoService;
 import com.stiven.app.service.HabitacionService;
 import com.stiven.app.service.ResidenciaService;
-import com.stiven.app.service.UsuarioService;
 
 @Controller
 @RequestMapping("/habitacion")
