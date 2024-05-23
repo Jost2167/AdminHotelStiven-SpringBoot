@@ -101,8 +101,13 @@
 		            <li class="nav-item">
 		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
 		            </li>
-
-		        	<form th:action="@{/logout}" method="post">
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitacion">[[#{ver.habitaciones}]]</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+					<form th:action="@{/logout}" method="post">
 		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
 		    </form>
 		        </ul>
@@ -146,7 +151,12 @@
 		            <li class="nav-item">
 		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
 		            </li>
-
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitacion">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
 		        	<form th:action="@{/logout}" method="post">
 		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
 		    </form>
@@ -154,6 +164,107 @@
 		    </div>
 		</nav>
 	</div>
+	
+	<!-- NAVBAR ADMIN CREAR HABITACION-->
+	<div th:fragment="navbar-crear-habitacion">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/crear-habitacion(lang=es)}">Español</a>
+		                    <a class="dropdown-item" th:href="@{/habitacion/crear-habitacion(lang=en)}">Inglés</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN VER HABITACIONES POR RESIDENCIA-->
+	<div th:fragment="navbar-ver-habitaciones-residencia">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/residencia/{residenciaId}(residenciaId=${residenciaId}, lang='es')}">Español</a>
+    <a class="dropdown-item" th:href="@{/habitacion/residencia/{residenciaId}(residenciaId=${residenciaId}, lang='en')}">Inglés</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
 	
 	<!-- NAVBAR INICIAR SESION-->
 	<div th:fragment="navbar-iniciar">

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+    <div th:replace="includes/layout :: navbar-ver-habitaciones-residencia"></div>
+    
+    
+    
+    
+    <div class="container">
+    <h2 class="text-center my-4 font-weight-bold">Habitaciones por residencia</h2>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+						<th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                        <th>Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+                    <tr th:each="habitacion : ${habitaciones}">
+                        <td th:text="${habitacion.id}">1</td>
+                        <td th:text="${habitacion.nombre}">Nombre</td>
+                        <td th:text="${habitacion.precio}">Precio</td>
+                        <td th:text="${habitacion.estado}">Estado</td>
+                        <td th:text="${habitacion.usuario.userName}">Usuario</td>
+                    </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

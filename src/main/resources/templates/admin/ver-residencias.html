@@ -18,7 +18,7 @@
                     <th>[[#{ver.categoria}]]</th>
                     <th>[[#{ver.ubicacion}]]</th>
                     <th>[[#{ver.descripcion}]]</th>
-                    <th>[[#{ver.precio}]]</th>
+                    <th>[[#{ver.telefono}]]</th>
                     <th>[[#{ver.estado}]]</th>
                     <th>[[#{ver.imagen}]]</th>
                     <th>[[#{ver.accion}]]</th>
@@ -31,15 +31,15 @@
                     <td th:text="${residencia.categoria}"></td>
                     <td th:text="${residencia.ubicacion}"></td>
                     <td th:text="${residencia.descripcion}"></td>
-                    <td th:text="${residencia.precio}"></td>
+                    <td th:text="${residencia.telefono}"></td>
                     <td th:text="${residencia.estado}"></td>
                     <td>
                         <img th:src="@{'/recursos/'+${residencia.imagen}}" alt="Imagen de la Residencia" class="img-fluid" width="100">
                     </td>
                     <td style="white-space:nowrap">
-                    	<a class="btn btn-warning" th:href="@{/admin/editar-residencia/{id}(id=${residencia.id})}">Editar</a>
+                    	<a class="btn btn-warning" th:href="@{/admin/editar-residencia/{id}(id=${residencia.id})}">[[#{editar}]]</a>
                         <a class="btn btn-danger" th:href="@{/admin/eliminar-residencia/{id}(id=${residencia.id})}"
-                        onclick="return confirm('¿Esta seguro?')">Eliminar</a>
+                        onclick="return confirm('¿Esta seguro?')">[[#{eliminar}]]</a>
                     </td>
                 </tr>
             </tbody>

@@ -54,7 +54,7 @@ public class ResidenciaService implements IResidenciaService{
 	        residenciaExistente.setUbicacion(residencia.getUbicacion());
 	        residenciaExistente.setCategoria(residencia.getCategoria());
 	        residenciaExistente.setEstado(residencia.getEstado());
-	        residenciaExistente.setPrecio(residencia.getPrecio());
+	        residenciaExistente.setTelefono(residencia.getTelefono());
 	        residenciaExistente.setDescripcion(residencia.getDescripcion());
 	        residenciaExistente.setImagen(residencia.getImagen());
 	        // Guardar los cambios en la base de datos

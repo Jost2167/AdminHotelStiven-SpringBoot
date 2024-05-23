@@ -9,6 +9,7 @@ import com.stiven.app.entity.UsuarioEntity;
 import com.stiven.app.repository.UsuarioRepository;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -38,5 +39,9 @@ public class UsuarioService {
 
     public UsuarioEntity findByLogin(String login) {
         return usuarioRepository.findByUserName(login);
+    }
+    
+    public UsuarioEntity obtenerUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
     }
 }

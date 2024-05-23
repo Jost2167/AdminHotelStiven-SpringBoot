@@ -6,9 +6,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.stiven.app.entity.ERol;
+import com.stiven.app.entity.EstadoEntity;
 import com.stiven.app.entity.HabitacionEntity;
 import com.stiven.app.entity.ResidenciaEntity;
 import com.stiven.app.entity.UsuarioEntity;
+import com.stiven.app.repository.EstadoRepository;
 import com.stiven.app.repository.HabitacionRepository;
 import com.stiven.app.repository.ResidenciaRepository;
 import com.stiven.app.repository.UsuarioRepository;
@@ -19,11 +21,21 @@ public class DataConfig {
     @Bean
     public CommandLineRunner initData(UsuarioRepository usuarioRepository, 
                                       ResidenciaRepository residenciaRepository, 
-                                      HabitacionRepository habitacionRepository) {
+                                      HabitacionRepository habitacionRepository,
+                                      EstadoRepository estadoRepository) {
         return args -> {
             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-            // Crear usuario
+            //CREAR ESTADOS
+            EstadoEntity estado1= new EstadoEntity();
+            estado1.setEstado("DISPONIBLE");
+            estadoRepository.save(estado1);
+            
+            EstadoEntity estado2= new EstadoEntity();
+            estado2.setEstado("OCUPADO");
+            estadoRepository.save(estado2);
+
+            //CREAR USUARIO
             UsuarioEntity usuario = new UsuarioEntity();
             usuario.setUserName("juan");
             usuario.setNombre("Juan");
@@ -33,13 +45,13 @@ public class DataConfig {
             usuario.setRol(ERol.USER);
             usuarioRepository.save(usuario);
 
-            // Crear residencias
+            //CREAR RESIDENCIAS
             ResidenciaEntity residenciaA = new ResidenciaEntity();
             residenciaA.setNombre("Residencia A");
             residenciaA.setCategoria("Hotel");
             residenciaA.setUbicacion("Ciudad X");
             residenciaA.setDescripcion("Descripción de la Residencia A");
-            residenciaA.setPrecio("100");
+            residenciaA.setTelefono("100");
             residenciaA.setEstado("Disponible");
             residenciaA.setImagen("neiva1.jpg");
             residenciaRepository.save(residenciaA);
@@ -49,12 +61,12 @@ public class DataConfig {
             residenciaB.setCategoria("Hostal");
             residenciaB.setUbicacion("Ciudad Y");
             residenciaB.setDescripcion("Descripción de la Residencia B");
-            residenciaB.setPrecio("50");
+            residenciaB.setTelefono("50");
             residenciaB.setEstado("Disponible");
             residenciaB.setImagen("neiva2.jpg");
             residenciaRepository.save(residenciaB);
 
-            // Crear habitaciones para residencia A
+            //HABITACIONES PARA RESIDENCIA 1
             HabitacionEntity habitacion1 = new HabitacionEntity();
             habitacion1.setNombre("Habitación Doble");
             habitacion1.setPrecio("80");
@@ -71,7 +83,7 @@ public class DataConfig {
             habitacion2.setUsuario(usuario);
             habitacionRepository.save(habitacion2);
 
-            // Crear habitaciones para residencia B
+            //HABITACIONES PARA RESIDENCIA 2
             HabitacionEntity habitacion3 = new HabitacionEntity();
             habitacion3.setNombre("Habitación Compartida");
             habitacion3.setPrecio("30");

@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.stiven.app.entity.HabitacionEntity;
 import com.stiven.app.entity.ResidenciaEntity;
 import com.stiven.app.entity.UsuarioEntity;
+import com.stiven.app.service.EstadoService;
 import com.stiven.app.service.HabitacionService;
 import com.stiven.app.service.ResidenciaService;
+import com.stiven.app.service.UsuarioService;
 
 @Controller
 @RequestMapping("/habitacion")
@@ -29,10 +31,14 @@ public class HabitacionController {
 	 @Autowired
 	    private ResidenciaService residenciaService;
 	 
+	 @Autowired
+	 	private EstadoService estadoService; 
 	 
-	 	//EL USUARIO SOLAMENTE PUEDE VER ESTA RUTA. NECESITO VALIDAD QUE SEA EL USUARIO CORRECTO
+	 
 
-	 
+	 	
+
+	 //PERMITE VER LA INFORMACION DE HABITACIONES PERTENECIENTES A UN USUARIO CON SU RESIDENCIA
 	 @GetMapping("/usuario/{usuarioId}")
 	 public String getHabitacionesPorUsuario(@PathVariable Long usuarioId, Model model) {
 	     UsuarioEntity usuario = new UsuarioEntity();
@@ -49,35 +55,42 @@ public class HabitacionController {
 	     }
 	     
 	     model.addAttribute("habitaciones", habitaciones);
-	     return "/usuario/habitaciones-por-usuario"; // Nombre de la vista
+	     return "/habitacion/habitaciones-por-usuario"; // Nombre de la vista
 	 }
 	 
+	 @GetMapping("/ver-habitaciones")
+	 public String verHabitaciones(){
+		 return "/habitacion/ver-habitaciones";
+	 }
+	 
+	 //PERMITE VER LA INFORMACION DE LAS HABITACIONES PERTENECIENTES A UNA RESIDENCIA
 	 @GetMapping("/residencia/{residenciaId}")
 	 public String getHabitacionesPorResidencia(@PathVariable Long residenciaId, Model model) {
 	     ResidenciaEntity residencia = residenciaService.listById(residenciaId);
 	     List<HabitacionEntity> habitaciones = habitacionService.getHabitacionesPorResidencia(residencia);
 	     model.addAttribute("residencia", residencia);
 	     model.addAttribute("habitaciones", habitaciones);
-	     return "habitaciones_por_residencia"; // Nombre de la vista
+	     return "/habitacion/habitaciones-por-residencia"; // Nombre de la vista
 	 }
 
-	    @GetMapping("/nueva")
+	    @GetMapping("/crear-habitacion")
 	    public String mostrarFormularioNuevaHabitacion(Model model) {
 	        model.addAttribute("habitacion", new HabitacionEntity());
-	        return "formulario_nueva_habitacion"; // Nombre de la vista
+	        model.addAttribute("estados", estadoService.listaEstados());
+	        return "/habitacion/formulario-nueva-habitacion"; // Nombre de la vista
 	    }
 
 	    @PostMapping
 	    public String crearHabitacion(@ModelAttribute HabitacionEntity habitacion) {
 	        habitacionService.crearHabitacion(habitacion);
-	        return "redirect:/habitacion/residencia/" + habitacion.getResidencia().getId(); // Ajusta según sea necesario
+	        return "redirect:/habitacion/residencia/" + habitacion.getResidencia().getId();
 	    }
 	    
 	    @GetMapping("/editar/{habitacionId}")
 		public String mostrarFormularioEditarHabitacion(@PathVariable Long habitacionId, Model model) {
 		    HabitacionEntity habitacion = habitacionService.obtenerHabitacionPorId(habitacionId);
 		    model.addAttribute("habitacion", habitacion);
-		    return "formulario_editar_habitacion"; // Nombre de la vista
+		    return "/habitacion/formulario-editar-habitacion"; // Nombre de la vista
 		}
 
 		@PostMapping("/actualizar")

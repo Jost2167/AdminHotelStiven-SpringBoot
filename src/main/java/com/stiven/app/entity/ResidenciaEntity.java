@@ -27,7 +27,7 @@ public class ResidenciaEntity {
     @NotEmpty
     private String descripcion;
     @NotEmpty
-    private String precio;
+    private String telefono;
     @NotEmpty
     private String estado;
     
@@ -66,11 +66,11 @@ public class ResidenciaEntity {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getPrecio() {
-		return precio;
+	public String getTelefono() {
+		return telefono;
 	}
-	public void setPrecio(String precio) {
-		this.precio = precio;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 	public String getEstado() {
 		return estado;
