@@ -1,245 +1,235 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="includes/layout :: head"></head>
+<head th:replace="includes/layout :: head">
+    <link rel="stylesheet" type="text/css" href="/path/to/your/styles.css">
+</head>
 <body>
-	<div th:replace="includes/layout :: navbar"></div>
 	
 	<style>
-		.residencia-card {
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	margin-bottom: 20px;
-	display: flex;
-	align-items: center;
+.residencia-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .residencia-card img {
-	border-radius: 15px;
-	height: 200px;
-	width: auto;
-	max-width: 100%;
-	object-fit: cover;
-	margin: 0 auto;
+    border-radius: 15px;
+    height: 250px;
+    width: 80%;
+    object-fit: cover;
+    margin: 0 auto;
 }
 
 .residencia-description {
-	padding: 20px;
-	flex: 1;
+    padding: 20px;
+    flex: 1;
 }
 
 .container-custom {
-	max-width: 800px;
-	margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .carousel-item img {
-	height: 400px;
-	object-fit: cover;
-	width: 100%;
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
 }
 
 .ValueProposition_block__YLRvo {
-	flex: 0 0 calc(33.33% - 20px);
-	max-width: calc(33.33% - 20px);
-	text-align: center;
-	margin-bottom: 20px;
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .ValueProposition_image__IMuA8 {
-	width: 80px;
-	height: auto;
-	margin-bottom: 10px;
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 .ValueProposition_heading__UA01t {
-	font-size: 14px;
-	margin-bottom: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .ValueProposition_textSection__BzPPX {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .ValueProposition_container__yQv1l {
-	background-color: #003B95;
-	color: white;
-	display: flex;
-	justify-content: space-around;
+    background-color: #003B95;
+    color: white;
+    display: flex;
+    justify-content: space-around;
 }
 
 .ValueProposition_block__YLRvo {
-	flex: 1;
-	text-align: center;
-	padding: 20px;
+    flex: 1;
+    text-align: center;
+    padding: 20px;
 }
 
-	</style>
-			
-	
-	<div th:fragment="index">
-		<!-- Carrusel de Imágenes -->
-		<div class="carousel-container">
-			<div id="carouselExampleIndicators" class="carousel slide"
-				data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0"
-						class="active"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="/img/ciudad/neiva.jpg" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>NEIVA</h5>
-							<p>[[#{carousel.neiva}]]</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img src="/img/ciudad/medellin.jpg" class="d-block w-100"
-							alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>MEDELLÍN</h5>
-							<p>[[#{carousel.medellin}]]</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img src="/img/ciudad/cali.jpg" class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>CALI</h5>
-							<p>[[#{carousel.cali}]]</p>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators"
-					role="button" data-slide="prev"> <span
-					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-					class="sr-only">Previous</span>
-				</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
-					role="button" data-slide="next"> <span
-					class="carousel-control-next-icon" aria-hidden="true"></span> <span
-					class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-		<section class="ValueProposition_container__yQv1l">
-			<div class="ValueProposition_block__YLRvo">
-				<picture>
-				<source media="(min-width:980px)"
-					srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/SearchDesktop.svg"
-					type="image/svg+xml">
-				<img class="ValueProposition_image__IMuA8"
-					src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Search.svg"
-					alt="Busca rápido"> </picture>
-				<div class="ValueProposition_textSection__BzPPX">
-					<h3 class="ValueProposition_heading__UA01t">[[#{busca.rapido}]]</h3>
-					<p>[[#{mensaje.busca.rapido}]].</p>
-				</div>
-			</div>
-			<div class="ValueProposition_block__YLRvo">
-				<picture>
-				<source media="(min-width:980px)"
-					srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/CompareDesktop.svg"
-					type="image/svg+xml">
-				<img class="ValueProposition_image__IMuA8"
-					src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Compare.svg"
-					alt="Compara con confianza"> </picture>
-				<div class="ValueProposition_textSection__BzPPX">
-					<h3 class="ValueProposition_heading__UA01t">[[#{compara.confianza}]]</h3>
-					<p>[[#{compara.precios}]].</p>
-				</div>
-			</div>
-			<div class="ValueProposition_block__YLRvo">
-				<picture>
-				<source media="(min-width:980px)"
-					srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/SaveDesktop.svg"
-					type="image/svg+xml">
-				<img class="ValueProposition_image__IMuA8"
-					src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Save.svg"
-					alt="Ahorra a lo grande"> </picture>
-				<div class="ValueProposition_textSection__BzPPX">
-					<h3 class="ValueProposition_heading__UA01t">[[#{ahorra.grande}]]</h3>
-					<p>[[#{pagina.asociada}]].</p>
-				</div>
-			</div>
-		</section>
-		<!-- Columna con imagen y descripción del hotel -->
-		<div class="container container-custom mt-4 mb-5">
-			<div th:each="residencia : ${residencias}"
-				class="row residencia-card">
-				<!-- Columna con imagen del hotel -->
-				<div class="col-md-6 p-0 d-flex align-items-center">
-					<img th:src="@{'/recursos/' + ${residencia.imagen}}"
-						alt="Imagen del Hotel" class="img-fluid mx-auto">
-				</div>
-				<!-- Columna con descripción del hotel -->
-				<div class="col-md-6 residencia-description">
-					<h3 th:text="${residencia.nombre}"></h3>
-					<p>
-						<strong>[[#{ver.categoria}]]:</strong> <span
-							th:text="${residencia.categoria}"></span>
-					</p>
-					<p>
-						<strong>[[#{ver.descripcion}]]:</strong> <span
-							th:text="${residencia.descripcion}"></span>
-					</p>
-					<p>
-						<strong>[[#{ver.telefono}]]:</strong> <span th:text="${residencia.telefono}"></span>
-					</p>
-					<p>
-						<strong>[[#{ver.ubicacion}]]:</strong> <span
-							th:text="${residencia.ubicacion}"></span>
-					</p>
-					<a th:href="@{'/usuario/ver-habitaciones/' + ${residencia.id}}"
-						class="btn btn-primary mt-3">[[#{ver.habitaciones}]]</a>
-				</div>
-			</div>
-		</div>
-		<!-- Sección "Sobre Nosotros" y "Contacto" en una sola fila -->
-		<div class="container" id="nosotros">
-			<div class="row justify-content-center mb-5">
-				<div class="col-lg-6">
-					<h2 class="text-center">[[#{nav.nosotros}]]</h2>
-					<div class="row mt-2">
-						<div class="col-md-12 text-center">
-							<img src="/img/nosotros.png" alt="Nosotros"
-								class="img-fluid mb-3" style="max-width: 300px;">
-							<p>[[#{sobrenosotros.p1}]]</p>
-							<p>[[#{sobrenosotros.p2}]]</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<h2 class="text-center">[[#{contacto}]]</h2>
-					<form class="mt-2">
-						<div class="form-group">
-							<label for="name">[[#{contacto.nombre}]]:</label> <input
-								type="text" class="form-control" id="name">
-						</div>
-						<div class="form-group">
-							<label for="email">[[#{contacto.correo}]]:</label> <input
-								type="email" class="form-control" id="email">
-						</div>
-						<div class="form-group">
-							<label for="message">[[#{contacto.mensaje}]]:</label>
-							<textarea class="form-control" id="message" rows="3"></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary">[[#{contacto.mensaje}]]</button>
-					</form>
-					<div class="social-icons mt-3">
-						<a href="https://wa.me/1234567890" target="_blank"> <img
-							src="https://img.icons8.com/color/48/000000/whatsapp.png"
-							alt="WhatsApp">
-						</a> <a href="https://www.facebook.com/tu_pagina" target="_blank">
-							<img src="https://img.icons8.com/color/48/000000/facebook.png"
-							alt="Facebook">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer th:replace="includes/layout :: footer"></footer>
+</style>
+
+
+    <div th:replace="includes/layout :: navbar"></div>
+
+    <div th:fragment="index">
+        <!-- Carrusel de Imágenes -->
+        <div class="carousel-container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/img/ciudad/neiva.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>NEIVA</h5>
+                            <p>[[#{carousel.neiva}]]</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/ciudad/medellin.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>MEDELLÍN</h5>
+                            <p>[[#{carousel.medellin}]]</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/ciudad/cali.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>CALI</h5>
+                            <p>[[#{carousel.cali}]]</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <section class="ValueProposition_container__yQv1l">
+            <div class="ValueProposition_block__YLRvo">
+                <picture>
+                <source media="(min-width:980px)"
+                    srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/SearchDesktop.svg"
+                    type="image/svg+xml">
+                <img class="ValueProposition_image__IMuA8"
+                    src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Search.svg"
+                    alt="Busca rápido"> </picture>
+                <div class="ValueProposition_textSection__BzPPX">
+                    <h3 class="ValueProposition_heading__UA01t">[[#{busca.rapido}]]</h3>
+                    <p>[[#{mensaje.busca.rapido}]].</p>
+                </div>
+            </div>
+            <div class="ValueProposition_block__YLRvo">
+                <picture>
+                <source media="(min-width:980px)"
+                    srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/CompareDesktop.svg"
+                    type="image/svg+xml">
+                <img class="ValueProposition_image__IMuA8"
+                    src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Compare.svg"
+                    alt="Compara con confianza"> </picture>
+                <div class="ValueProposition_textSection__BzPPX">
+                    <h3 class="ValueProposition_heading__UA01t">[[#{compara.confianza}]]</h3>
+                    <p>[[#{compara.precios}]].</p>
+                </div>
+            </div>
+            <div class="ValueProposition_block__YLRvo">
+                <picture>
+                <source media="(min-width:980px)"
+                    srcset="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/SaveDesktop.svg"
+                    type="image/svg+xml">
+                <img class="ValueProposition_image__IMuA8"
+                    src="https://imgcy.trivago.com//hardcodedimages/homepage-landing/usp/Save.svg"
+                    alt="Ahorra a lo grande"> </picture>
+                <div class="ValueProposition_textSection__BzPPX">
+                    <h3 class="ValueProposition_heading__UA01t">[[#{ahorra.grande}]]</h3>
+                    <p>[[#{pagina.asociada}]].</p>
+                </div>
+            </div>
+        </section>
+        <!-- Columna con imagen y descripción del hotel -->
+        <div class="container container-custom mt-4 mb-5">
+            <div th:each="residencia : ${residencias}" class="row residencia-card">
+                <!-- Columna con imagen del hotel -->
+                <div class="col-md-6 p-0 d-flex align-items-center">
+                    <img th:src="@{'/recursos/' + ${residencia.imagen}}" alt="Imagen del Hotel" class="img-fluid mx-auto">
+                </div>
+                <!-- Columna con descripción del hotel -->
+                <div class="col-md-6 residencia-description">
+                    <h3 th:text="${residencia.nombre}"></h3>
+                    <p>
+                        <strong>[[#{ver.categoria}]]:</strong> <span th:text="${residencia.categoria}"></span>
+                    </p>
+                    <p>
+                        <strong>[[#{ver.descripcion}]]:</strong> <span th:text="${residencia.descripcion}"></span>
+                    </p>
+                    <p>
+                        <strong>[[#{ver.telefono}]]:</strong> <span th:text="${residencia.telefono}"></span>
+                    </p>
+                    <p>
+                        <strong>[[#{ver.ubicacion}]]:</strong> <span th:text="${residencia.ubicacion}"></span>
+                    </p>
+                    <a th:href="@{'/usuario/ver-habitaciones/' + ${residencia.id}}" class="btn btn-primary mt-3">[[#{ver.habitaciones}]]</a>
+                </div>
+            </div>
+        </div>
+        <!-- Sección "Sobre Nosotros" y "Contacto" en una sola fila -->
+        <div class="container" id="nosotros">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="text-center">[[#{nav.nosotros}]]</h2>
+                    <div class="row mt-2">
+                        <div class="col-md-12 text-center">
+                            <img src="/img/nosotros.png" alt="Nosotros" class="img-fluid mb-3" style="max-width: 300px;">
+                            <p>[[#{sobrenosotros.p1}]]</p>
+                            <p>[[#{sobrenosotros.p2}]]</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-center">[[#{contacto}]]</h2>
+                    <form class="mt-2">
+                        <div class="form-group">
+                            <label for="name">[[#{contacto.nombre}]]:</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">[[#{contacto.correo}]]:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">[[#{contacto.mensaje}]]:</label>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">[[#{contacto.mensaje}]]</button>
+                    </form>
+                    <div class="social-icons mt-3">
+                        <a href="https://wa.me/1234567890" target="_blank">
+                            <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
+                        </a>
+                        <a href="https://www.facebook.com/tu_pagina" target="_blank">
+                            <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="includes/layout :: footer"></footer>
 </body>
 </html>

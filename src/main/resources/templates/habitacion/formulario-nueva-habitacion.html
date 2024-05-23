@@ -43,9 +43,10 @@
     <div class="form-container">
         <h2 class="text-center mb-4 font-weight-bold">Nueva Habitación</h2>
 
-        <form th:action="@{/habitacion}" th:object="${habitacion}" method="post">
+        <form th:action="@{/habitacion/guardar-habitacion}" th:object="${habitacion}" method="post">
             <div class="row mb-3"> <!-- Utiliza una fila para agrupar los campos -->
                 <div class="col-md-6"> <!-- Divide el espacio en dos columnas -->
+                	<input type="hidden" th:field="*{id}" />
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required />
                 </div>
