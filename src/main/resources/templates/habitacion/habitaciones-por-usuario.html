@@ -20,17 +20,17 @@
     <div th:replace="includes/layout :: navbar-ver-habitaciones-usuario"></div>
 
     <div class="container">
-        <h2 class="text-center my-4 font-weight-bold">Habitaciones del Usuario</h2>
+        <h2 class="text-center my-4 font-weight-bold">[[#{habitaciones.usuarios}]]</h2>
         
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
-                    <th>Categoría</th>
-                    <th>Hotel</th>
-                    <th>Ubicación</th>
-                    <th>Descripción</th>
-                    <th>Habitación</th>
-                    <th>Precio</th>
+                    <th>[[#{ver.categoria}]]</th>
+                    <th>[[#{residencia}]]</th>
+                    <th>[[#{ver.ubicacion}]]</th>
+                    <th>[[#{ver.descripcion}]]</th>
+                    <th>[[#{habitacion}]]</th>
+                    <th>[[#{ver.precio}]]</th>
                 </tr>
             </thead>
             <tbody>

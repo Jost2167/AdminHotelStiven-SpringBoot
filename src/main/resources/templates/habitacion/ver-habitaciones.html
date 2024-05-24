@@ -37,20 +37,20 @@
     
     <div class="card-container">
         <div class="card">
-            <h2>Ver habitaciones por usuario</h2>
+            <h2>[[#{ver.habitaciones.usuario}]]</h2>
             <form action="#" method="get" onsubmit="redirectToUserHabitaciones(); return false;">
-                <label for="usuarioId">Ingrese el ID del Usuario:</label>
+                <label for="usuarioId">[[#{ingrese.id.usuario}]]:</label>
                 <input type="number" class="form-control" id="usuarioId" name="usuarioId" required>
-                <button type="submit" class="btn btn-primary">Ver habitaciones</button>
+                <button type="submit" class="btn btn-primary">[[#{ver.habitaciones}]]</button>
             </form>
         </div>
         
         <div class="card">
-            <h2>Ver habitaciones por residencia</h2>
+            <h2>[[#{ver.habitacion.residencia}]]</h2>
             <form action="#" method="get" onsubmit="redirectToResidenciaHabitaciones(); return false;">
-                <label for="residenciaId">Ingrese el ID de la Residencia:</label>
+                <label for="residenciaId">[[#{ingrese.id.residencia}]]:</label>
                 <input type="number" class="form-control" id="residenciaId" name="residenciaId" required>
-                <button type="submit" class="btn btn-primary">Ver habitaciones</button>
+                <button type="submit" class="btn btn-primary">[[#{ver.habitaciones}]]</button>
             </form>
         </div>
     </div>

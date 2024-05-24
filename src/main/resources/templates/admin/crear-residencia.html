@@ -76,7 +76,7 @@
 
             <div class="col">
                 <div class="form-group">
-                    <label for="estado" class="form-label">Estado:</label>
+                    <label for="estado" class="form-label">[[#{ver.estado}]]</label>
                 	<select class="form-select" id="estado" th:field="*{estado}" required>
                     	<option th:each="estado : ${estados}" th:value="${estado.estado}" th:text="${estado.estado}"></option>
                 	</select>
