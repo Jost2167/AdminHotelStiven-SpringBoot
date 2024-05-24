@@ -14,7 +14,7 @@
                     <!-- <img th:src="@{'/recursos/'+${habitacion.imagen}}" class="card-img-top" alt="Habitación"> -->
                     <div class="card-body">
                         <h5 class="card-title" th:text="${habitacion.nombre}"></h5>
-                        <p class="card-text"><strong>Precio:</strong> <span th:text="${habitacion.precio}"></span></p>
+                        <p class="card-text"><strong>Precio:</strong> <span th:text="'$' + ${habitacion.precio}"></span></p>
                         <!-- Agrega más detalles de la habitación si lo necesitas -->
                     </div>
                 </div>

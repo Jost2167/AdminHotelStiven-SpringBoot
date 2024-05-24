@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.stiven.app.entity.ResidenciaEntity;
+import com.stiven.app.service.ICategoriaService;
+import com.stiven.app.service.IEstadoService;
 import com.stiven.app.service.IResidenciaService;
 
 
@@ -32,6 +34,12 @@ public class AdminController {
     @Autowired
     private IResidenciaService residenciaService;
     
+    @Autowired
+    private ICategoriaService categoriaService;
+    
+    @Autowired
+    private IEstadoService estadoService;
+    
     @GetMapping("/ver-residencias")
     public String verResidenciasAdmin(Model model) {
         List<ResidenciaEntity> residencias = residenciaService.listAll();
@@ -42,7 +50,9 @@ public class AdminController {
     @GetMapping("/crear-residencia")
     public String getCrearResidenciaAdmin(Model model) {
         ResidenciaEntity residenciaEntity = new ResidenciaEntity();
+        model.addAttribute("estados", estadoService.listaEstados());
         model.addAttribute("residenciaEntity", residenciaEntity);
+        model.addAttribute("categorias", categoriaService.listaCategorias());
         return "/admin/crear-residencia";
     }
 

@@ -68,22 +68,18 @@
             <div class="col">
                 <div class="form-group">
                     <label for="categoria" class="form-label">[[#{ver.categoria}]]</label>
-                    <select class="form-select" th:field="*{categoria}" id="categoria" required>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Casa de paso">Casa de paso</option>
-                        <option value="Hotel">Hotel</option>
-                        <option value="Motel">Motel</option>
-                    </select>
+                	<select class="form-select" id="categoria" th:field="*{categoria}" required>
+                    	<option th:each="categoria : ${categorias}" th:value="${categoria.categoria}" th:text="${categoria.categoria}"></option>
+                	</select>
                 </div>
             </div>
+
             <div class="col">
                 <div class="form-group">
-                    <label for="estado" class="form-label">[[#{ver.estado}]]</label>
-                    <select class="form-select" th:field="*{estado}" id="estado" required>
-                        <option value="RESERVADO">RESERVADO</option>
-                        <option value="DISPONIBLE">DISPONIBLE</option>
-                    </select>
+                    <label for="estado" class="form-label">Estado:</label>
+                	<select class="form-select" id="estado" th:field="*{estado}" required>
+                    	<option th:each="estado : ${estados}" th:value="${estado.estado}" th:text="${estado.estado}"></option>
+                	</select>
                 </div>
             </div>
         </div>

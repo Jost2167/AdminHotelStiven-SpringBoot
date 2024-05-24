@@ -19,15 +19,23 @@
                         <th>Precio</th>
                         <th>Estado</th>
                         <th>Usuario</th>
+                        <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
                     <tr th:each="habitacion : ${habitaciones}">
                         <td th:text="${habitacion.id}">1</td>
                         <td th:text="${habitacion.nombre}">Nombre</td>
-                        <td th:text="${habitacion.precio}">Precio</td>
+                        <td th:text="'$' + ${habitacion.precio}">Precio</td>
                         <td th:text="${habitacion.estado}">Estado</td>
                         <td th:text="${habitacion.usuario.userName}">Usuario</td>
+                        <td>
+                        <!-- Botón de editar -->
+                        <a th:href="@{'/habitacion/editar/' + ${habitacion.id}}" class="btn btn-warning btn-sm">Editar</a>
+                        <!-- Botón de eliminar -->
+                        <a th:href="@{'/habitacion/eliminar/' + ${habitacion.id} + '?usuarioId=' + ${habitacion.usuario.id}}" class="btn btn-danger btn-sm">Eliminar</a>
+                        
+                    	</td>
                     </tr>
         </tbody>
     </table>

@@ -1,9 +1,5 @@
 package com.stiven.app.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.stiven.app.entity.HabitacionEntity;
@@ -41,7 +36,7 @@ public class HabitacionController {
 
 	@Autowired
 	private EstadoService estadoService;
-
+	
 	// PERMITE VER LA INFORMACION DE HABITACIONES PERTENECIENTES A UN USUARIO CON SU
 	// RESIDENCIA
 	@GetMapping("/usuario/{usuarioId}")
@@ -133,6 +128,6 @@ public class HabitacionController {
 	@GetMapping("/eliminar/{habitacionId}")
 	public String eliminarHabitacion(@PathVariable Long habitacionId, @RequestParam Long usuarioId) {
 		habitacionService.eliminarHabitacion(habitacionId);
-		return "redirect:/habitacion/usuario/" + usuarioId; // Redirige a la lista de habitaciones por usuario
+		return "redirect:/habitacion/ver-habitaciones";
 	}
 }
