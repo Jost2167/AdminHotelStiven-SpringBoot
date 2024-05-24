@@ -1,1 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+    <div th:replace="includes/layout :: navbar-usuario-ver-habitaciones"></div>
 
+    <div class="container mt-4">
+    	<h2 th:text="${residencia.nombre}"></h2>
+        <div class="row">
+            <div th:each="habitacion : ${habitaciones}" class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${habitacion.nombre}"></h5>
+                        <p class="card-text"><strong>[[#{ver.precio}]]:</strong> <span th:text="'$' + ${habitacion.precio}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="includes/layout :: footer"></footer>
+</body>
+</html>
