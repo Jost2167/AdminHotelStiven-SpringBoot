@@ -111,6 +111,8 @@ public class AdminController {
     	}
     	
     	model.addAttribute("residenciaEntity",residenciaEntity);
+    	model.addAttribute("estados", estadoService.listaEstados());
+    	model.addAttribute("categorias", categoriaService.listaCategorias());
     	
     	return "/admin/crear-residencia";
     }
