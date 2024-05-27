@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 
 COPY /target/pw_adminHotelStiven-0.0.1-SNAPSHOT.jar demo.jar
 
