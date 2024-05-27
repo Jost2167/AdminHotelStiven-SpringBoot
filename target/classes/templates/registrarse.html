@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+	<style>
+        .small-text {
+            font-size: 0.8rem;
+            color: #fff;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+        .container {
+            max-width: 100%;
+        }
+        .img-fluid {
+            max-height: 400px;
+        }
+    </style>
+
+	<div th:replace="includes/layout :: navbar-registrar"></div>
+
+	<div class="container mt-5">
+	    <div class="row justify-content-center">
+	        <div class="col-md-5">
+	            <img th:src="@{/img/registro.png}" alt="Imagen" class="img-fluid rounded">
+	        </div>
+	
+	        <div class="col-md-5">
+	            <div class="card">
+	                <div class="card-header" style="background-color: #003B95; color: white;">[[#{registro}]]</div>
+	                <div class="card-body">
+	                    <form th:action="@{/registrarse}" method="post" th:object="${usuario}">
+	                        <div class="form-row">
+	                            <div class="form-group col-md-6">
+	                                <label for="nombre">[[#{contacto.nombre}]]</label>
+	                                <input type="text" class="form-control" name="nombre">
+	                            </div>
+	                            <div class="form-group col-md-6">
+	                                <label for="apellido">[[#{contacto.apellido}]]</label>
+	                                <input type="text" class="form-control" name="apellido">
+	                            </div>
+	                        </div>
+	                        <div class="form-row">
+	                            <div class="form-group col-md-6">
+	                                <label for="correo">[[#{contacto.correo}]]</label>
+	                                <input type="email" class="form-control" name="correo">
+	                            </div>
+	                            <div class="form-group col-md-6">
+	                                <label for="userName">[[#{login.usuario}]]</label>
+	                                <input type="text" class="form-control" name="userName">
+	                            </div>
+	                            <div class="form-group col-md-12">
+	                                <label for="password">[[#{login.contrasena}]]</label>
+	                                <input type="password" class="form-control" name="password">
+	                            </div>
+	                        </div>
+	                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #003B95;">[[#{registrarse}]]</button>
+	                    </form>
+	                </div>
+	                <div class="card-footer">
+	                    <p class="text-center">[[#{tiene.cuenta}]] <a href="/login">[[#{si.cuenta}]]</a></p>
+	                </div>
+	            </div>
+	            <footer class="footer mt-auto py-3">
+	                <div class="container text-center">
+	                    <p class="mb-0 small-text" style="color: black;">[[#{login.terminos1}]]</p>
+	                    <p class="mb-0 small-text" style="color: black;">[[#{login.terminos2}]] Copyright (2024) - HotelStiven.com™</p>
+	                </div>
+	            </footer>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- HEAD -->
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AdminHotelStiven</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<!-- NAVBAR USUARIO -->
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">Admin</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="#nosotros">[[#{nav.nosotros}]]</a>
+		        	</li>
+		        	<li class="nav-item">
+		                <a class="nav-link" href="/login">[[#{nav.iniciar-sesion}]]</a>
+		        	</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR USUARIO VER HABITACIONES -->
+	<div th:fragment="navbar-usuario-ver-habitaciones">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/usuario/ver-habitaciones/{residenciaId}(residenciaId=${residenciaId}, lang='es')}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/usuario/ver-habitaciones/{residenciaId}(residenciaId=${residenciaId}, lang='en')}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/usuario/ver-habitaciones/{residenciaId}(residenciaId=${residenciaId}, lang='fr')}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">Admin</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="#nosotros">[[#{nav.nosotros}]]</a>
+		        	</li>
+		        	<li class="nav-item">
+		                <a class="nav-link" href="/login">[[#{nav.iniciar-sesion}]]</a>
+		        	</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN VER-->
+	<div th:fragment="navbar-admin-ver">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/admin/ver-residencias(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/admin/ver-residencias(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/admin/ver-residencias(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+					<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+
+	<!-- NAVBAR ADMIN CREAR-->
+	<div th:fragment="navbar-admin-crear">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/admin/crear-residencia(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/admin/crear-residencia(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/admin/crear-residencia(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN CREAR HABITACION-->
+	<div th:fragment="navbar-crear-habitacion">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/crear-habitacion(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/habitacion/crear-habitacion(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/habitacion/crear-habitacion(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN VER HABITACIONES-->
+	<div th:fragment="navbar-ver-habitaciones">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/ver-habitaciones(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/habitacion/ver-habitaciones(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/habitacion/ver-habitaciones(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN VER HABITACIONES POR RESIDENCIA-->
+	<div th:fragment="navbar-ver-habitaciones-residencia">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/residencia/{residenciaId}(residenciaId=${residenciaId}, lang='es')}">[[#{nav.idioma.espanol}]]</a>
+    						<a class="dropdown-item" th:href="@{/habitacion/residencia/{residenciaId}(residenciaId=${residenciaId}, lang='en')}">[[#{nav.idioma.ingles}]]</a>
+    						<a class="dropdown-item" th:href="@{/habitacion/residencia/{residenciaId}(residenciaId=${residenciaId}, lang='fr')}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	<!-- NAVBAR ADMIN VER HABITACIONES POR USUARIO-->
+	<div th:fragment="navbar-ver-habitaciones-usuario">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/habitacion/usuario/{usuarioId}(usuarioId=${usuarioId}, lang='es')}">[[#{nav.idioma.espanol}]]</a>
+    						<a class="dropdown-item" th:href="@{/habitacion/usuario/{usuarioId}(usuarioId=${usuarioId}, lang='en')}">[[#{nav.idioma.ingles}]]</a>
+    						<a class="dropdown-item" th:href="@{/habitacion/usuario/{usuarioId}(usuarioId=${usuarioId}, lang='fr')}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/ver-residencias">[[#{ver.residencias}]]</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/ver-habitaciones">[[#{ver.habitaciones}]]</a>
+					</li>
+		            <li class="nav-item"><a class="nav-link"
+						href="/habitacion/crear-habitacion">[[#{crear.habitacion}]]</a>
+					</li>
+		        	<form th:action="@{/logout}" method="post">
+		        <button type="submit" class="btn btn-danger mt-3">[[#{nav.cerrar-sesion}]]</button>
+		    </form>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+	
+	
+	<!-- NAVBAR INICIAR SESION-->
+	<div th:fragment="navbar-iniciar">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/login(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/login(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/login(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+    
+    <!-- NAVBAR REGISTRAR -->
+	<div th:fragment="navbar-registrar">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003B95;">
+		    <a class="navbar-brand" href="/">
+		        <img th:src="@{/img/logo.png}" alt="HotelStiven" width="30" height="30" class="d-inline-block align-text-top">
+		        HotelStiven
+		    </a>
+		
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		    </button>
+		
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <!-- Aquí está el idioma -->
+		            <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+		                    aria-expanded="false">
+		                    <img th:src="@{/img/idioma.png}" alt="Dropdown" width="20" height="20"
+		                        style="margin-right: 5px;">[[#{nav.idioma}]]
+		                </a>
+		                <div class="dropdown-menu">
+		                    <a class="dropdown-item" th:href="@{/registrarse(lang=es)}">[[#{nav.idioma.espanol}]]</a>
+		                    <a class="dropdown-item" th:href="@{/registrarse(lang=en)}">[[#{nav.idioma.ingles}]]</a>
+		                    <a class="dropdown-item" th:href="@{/registrarse(lang=fr)}">[[#{nav.idioma.frances}]]</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="/">[[#{nav.inicio}]]</a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+	</div>
+    
+
+
+
+
+	<!-- FOOTER -->
+	<footer th:fragment="footer" class="footer mt-3 py-3 bg-dark text-white">
+	    <div class="container text-center">
+	        <span>© [[#{footer.derecho-reservados}]]</span>
+	    </div>
+	</footer>
+</body>
+</html>

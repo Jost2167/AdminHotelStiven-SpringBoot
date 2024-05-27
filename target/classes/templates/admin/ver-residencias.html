@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+	<div th:replace="includes/layout :: navbar-admin-ver"></div>
+
+    <div class="container">
+        <h2 class="text-center my-4 font-weight-bold">[[#{residencias}]]</h2>
+        
+        <a class="btn btn-primary" href="/admin/crear-residencia">[[#{crear.residencia}]]</a>
+        
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>[[#{ver.id}]]</th>
+                    <th>[[#{contacto.nombre}]]</th>
+                    <th>[[#{ver.categoria}]]</th>
+                    <th>[[#{ver.ubicacion}]]</th>
+                    <th>[[#{ver.descripcion}]]</th>
+                    <th>[[#{ver.telefono}]]</th>
+                    <th>[[#{ver.estado}]]</th>
+                    <th>[[#{ver.imagen}]]</th>
+                    <th>[[#{ver.accion}]]</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="residencia : ${residencias}">
+                    <td th:text="${residencia.id}"></td>
+                    <td th:text="${residencia.nombre}"></td>
+                    <td th:text="${residencia.categoria}"></td>
+                    <td th:text="${residencia.ubicacion}"></td>
+                    <td th:text="${residencia.descripcion}"></td>
+                    <td th:text="${residencia.telefono}"></td>
+                    <td th:text="${residencia.estado}"></td>
+                    <td>
+                        <img th:src="@{'/recursos/'+${residencia.imagen}}" alt="Imagen de la Residencia" class="img-fluid" width="100">
+                    </td>
+                    <td style="white-space:nowrap">
+                    	<a class="btn btn-warning" th:href="@{/admin/editar-residencia/{id}(id=${residencia.id})}">[[#{editar}]]</a>
+                        <a class="btn btn-danger" th:href="@{/admin/eliminar-residencia/{id}(id=${residencia.id})}"
+                        onclick="return confirm('¿Esta seguro?')">[[#{eliminar}]]</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+</body>
+</html>

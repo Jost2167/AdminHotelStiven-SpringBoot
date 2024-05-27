@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+    <div th:replace="includes/layout :: navbar-ver-habitaciones-residencia"></div>
+    
+    
+    
+    
+    <div class="container">
+    <h2 class="text-center my-4 font-weight-bold">[[#{hab.residencia}]]</h2>
+
+    <table class="table mt-4 table-striped">
+        <thead>
+            <tr>
+						<th>[[#{ID}]]</th>
+                        <th>[[#{contacto.nombre}]]</th>
+                        <th>[[#{ver.precio}]]</th>
+                        <th>[[#{ver.estado}]]</th>
+                        <th>[[#{login.usuario}]]</th>
+                        <th>[[#{ver.accion}]]</th>
+            </tr>
+        </thead>
+        <tbody>
+                    <tr th:each="habitacion : ${habitaciones}">
+                        <td th:text="${habitacion.id}"></td>
+                        <td th:text="${habitacion.nombre}"></td>
+                        <td th:text="'$' + ${habitacion.precio}"></td>
+                        <td th:text="${habitacion.estado}"></td>
+                        <td th:text="${habitacion.usuario.userName}"></td>
+                        <td>
+                        <!-- Botón de editar -->
+                        <a th:href="@{'/habitacion/editar/' + ${habitacion.id}}" class="btn btn-warning btn-sm">[[#{editar}]]</a>
+                        <!-- Botón de eliminar -->
+                        <a th:href="@{'/habitacion/eliminar/' + ${habitacion.id} + '?usuarioId=' + ${habitacion.usuario.id}}" class="btn btn-danger btn-sm">[[#{eliminar}]]</a>
+                        
+                    	</td>
+                    </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

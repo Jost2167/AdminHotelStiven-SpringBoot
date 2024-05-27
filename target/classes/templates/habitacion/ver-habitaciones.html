@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/layout :: head"></head>
+<body>
+
+<style>
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            width: 300px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            text-align: center;
+        }
+        .card form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card form label,
+        .card form input,
+        .card form button {
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+
+    <div th:replace="includes/layout :: navbar-ver-habitaciones"></div>
+    
+    <div class="card-container">
+        <div class="card">
+            <h2>[[#{ver.habitaciones.usuario}]]</h2>
+            <form action="#" method="get" onsubmit="redirectToUserHabitaciones(); return false;">
+                <label for="usuarioId">[[#{ingrese.id.usuario}]]:</label>
+                <input type="number" class="form-control" id="usuarioId" name="usuarioId" required>
+                <button type="submit" class="btn btn-primary">[[#{ver.habitaciones}]]</button>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2>[[#{ver.habitacion.residencia}]]</h2>
+            <form action="#" method="get" onsubmit="redirectToResidenciaHabitaciones(); return false;">
+                <label for="residenciaId">[[#{ingrese.id.residencia}]]:</label>
+                <input type="number" class="form-control" id="residenciaId" name="residenciaId" required>
+                <button type="submit" class="btn btn-primary">[[#{ver.habitaciones}]]</button>
+            </form>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function redirectToUserHabitaciones() {
+            var usuarioId = document.getElementById('usuarioId').value;
+            if (usuarioId) {
+                window.location.href = 'http://localhost/habitacion/usuario/' + usuarioId;
+            }
+        }
+        
+        function redirectToResidenciaHabitaciones() {
+            var residenciaId = document.getElementById('residenciaId').value;
+            if (residenciaId) {
+                window.location.href = 'http://localhost/habitacion/residencia/' + residenciaId;
+            }
+        }
+    </script>    
+    
+    
+</body>
+</html>

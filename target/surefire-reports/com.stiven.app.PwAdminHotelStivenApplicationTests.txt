@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.stiven.app.PwAdminHotelStivenApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.59 s -- in com.stiven.app.PwAdminHotelStivenApplicationTests
